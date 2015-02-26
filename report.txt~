@@ -1,0 +1,30 @@
+Sara Cunnigham, report.txt
+Lab 5, 2/26/2015
+
+Part 1:
+https://github.com/srcunningham/lab5
+
+Parts 2 & 3:
+User: When the user runs the executable 'main', they will be prompted to enter a a puzzle file of type int and then their puzzle will be displayed.  Next, they will be prompted to enter a puzzle file of type char and again their puzzle will be displayed.  When the user runs the executable 'game' a simple game of sodoku will begin.  The user will be prompted to enter a puzzle file.  The puzzle will be displayed followed by a prompt to enter the value they wish to add to the board.  Next, they will be prompted in enter the row and column in which they wish to place this value entered in the for 'row column'. If they chose a valid spot, the board will be updated and displayed.  If they chose an invalid spot, an error message will be returned and the board will be displayed again asking for a different value and location.  This will continue until the puzzle is complete, at which time a solution message will appear and the program will end 
+
+Internal: 
+	main.cpp
+		This file demonstrates the templated Puzzle class. A puzzle object of type int is created and displayed and the a puzzle object of type chat is created and displayed.
+	game.cpp
+		Using the puzzle class, this file plays a simple game of sodoku.  A puzzle object, board, is created.  While the board is not complete (isComplete()), a continuous loop of displaying the board (display()) and adding values to the board (makeMove()).  When the puzzle is complete, a congratulatory message is displayed and the the program ends. 
+	sodoku.h 
+		This file is both the header and implementation of the Puzzle class.  
+		puzzle is a private data member of type 2D array that stores the puzzle.
+		Puzzle() is the templated constructor that takes in a string of the file name, opens the file, and then reads in the ints or chars etc. into the 2D vector puzzle.
+		 display() uses nested for loops to print the puzzle.  Additional cout lines are added for formatting purposes.
+		maveMove() takes in user input for the value he wishes to add.  Using if statemnets, the input is checked for validity.  The same is done for the location he wishes to place the value.  The spot is checked using member functions to make sure its a valid location based on the rules of sodoku.  If valid, the spot is updated.
+		validRow(int, T), validCol(int, T), and validBox(int, int, T) member functions use a nested for loops and if statments to check if teh value is able to be place in the suggested spot based on the rules of sodoku. 
+	isComplete() searches the entire puzzle for '0's.  If none are found, all the spots have been given a valid solution and the puzzle is complete. 
+
+Verified:
+	To verify, I read in the provided example puzzle. With pen and paper, I manually solved the puzzle.  Next, I checked that invalid input was properly handeled by entering values that already existed in those columns, rows, or boxes.  Finally, I solved the puzzle and received the message that the puzzle was complete and the program ended. 
+
+Extended Discussion:
+	Worked well: Templating so that both char and ints could be read in.  A few minor tweaks would need to be made so that the game works perfectly for both chars and ints.  
+	Worked not so well: The validBox member function is repetitive.  I think there could have been better planning on my part to try to simplify the logic behin it.  
+

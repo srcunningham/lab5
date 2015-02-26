@@ -89,19 +89,21 @@ void Puzzle<T>::makeMove(){
 
    int n, r, c; 
 
+   // get value from user
    cout << "What number would you like to add to the board? "; 
    cin >> n;
 
+  // check for valid input
   if ( n < 1 || n > 9){
 	   do {
 		cout << "Invalid input.  Please input a number between 1 and 9: ";
 		cin >> n;
 	  } while ( n < 1 || n > 9); 
   }
-
+  // get position from user
    cout << "Where would you like to place your number (row column) [1-9]? ";
    cin >> r >> c;
-
+  // check for valid input
   if ( r < 1 || r > 9 || c < 1 || c > 9){
    	do {
 		cout << "Invalid input. Please input integers between 1 and 9." << endl;
@@ -119,9 +121,10 @@ void Puzzle<T>::makeMove(){
 
 }
 
+// member function to make sure there is not inputed value in that row
 template<typename T> 
 bool Puzzle<T>::validRow(int r, T input){
-
+ 
   for (int i = 0; i < 9; i++){
 	if (puzzle[r][i] == input)
 		return false;
@@ -132,6 +135,7 @@ bool Puzzle<T>::validRow(int r, T input){
 
 }
 
+// member function to make sure there is no inputed value in that column
 template<typename T>
 bool Puzzle<T>::validCol(int c, T input){
 
@@ -144,6 +148,7 @@ bool Puzzle<T>::validCol(int c, T input){
  
 }
 
+// member function to make sure there is no umputed value in that box
 template<typename T>
 bool Puzzle<T>::validBox(int r, int c, T input){
 
@@ -249,6 +254,7 @@ bool Puzzle<T>::validBox(int r, int c, T input){
 
 }
 
+// member function to determine when the puzzle is complete
 template<typename T>
 bool Puzzle<T>::isComplete(){
 
@@ -262,10 +268,6 @@ bool Puzzle<T>::isComplete(){
   
   return true;
 }
-
-
-
-
 
 
 #endif
